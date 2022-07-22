@@ -7,4 +7,5 @@
 dependencies=(
     initial-upgrade
     hostname-set
+    firewall-configured
 )
