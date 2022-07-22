@@ -5,5 +5,6 @@
 
 # shellcheck disable=2034
 dependencies=(
+    initial-upgrade
     hostname-set
 )
