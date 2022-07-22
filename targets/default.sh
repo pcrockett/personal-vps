@@ -5,4 +5,5 @@
 
 # shellcheck disable=2034
 dependencies=(
+    hostname-set
 )
