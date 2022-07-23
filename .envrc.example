@@ -1,1 +1,2 @@
 PATH_add bin
+export SSH_DEST="ubuntu@de.crockett.network"
