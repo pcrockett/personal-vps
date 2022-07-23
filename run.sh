@@ -68,13 +68,11 @@ __run_target() {
 
     if command -v apply &> /dev/null; then
         echo "Target ${name}..."
-
         (
             set -Eeuo pipefail
             trap '__fail_target "${name}" ${?}' ERR
             apply
         )
-
         echo "${name} [done]"
     else
         echo "${name} [done]"
