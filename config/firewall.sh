@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -Eeuo pipefail
 
-# Start fresh
+# Start fresh, make sure failures in this script don't lock us out of our server
 iptables --policy INPUT ACCEPT
 ip6tables --policy INPUT ACCEPT
 iptables --flush
@@ -22,6 +22,8 @@ iptables --append INPUT --protocol tcp --dport 22 --jump ACCEPT
 # This makes Tailscale direct connections possible: https://tailscale.com/kb/1082/firewall-ports/
 # iptables --append INPUT --protocol udp --dport 41641 --jump ACCEPT
 
+iptables --append INPUT --jump REJECT
+ip6tables --append INPUT --jump REJECT
 iptables --policy INPUT DROP
 ip6tables --policy INPUT DROP
 iptables --policy FORWARD DROP
