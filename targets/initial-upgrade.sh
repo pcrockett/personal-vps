@@ -2,7 +2,7 @@
 
 # shellcheck disable=2034
 dependencies=(
-    lib/apt-updated
+    software-update
 )
 
 reached_if() {
@@ -10,7 +10,6 @@ reached_if() {
 }
 
 apply() {
-    sudo apt-get upgrade --yes
     touch "${STATE_DIR}/initial-upgrade-completed"
     log_success "Initial upgrade completed. Recommended: reboot and re-run."
     exit 1

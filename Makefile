@@ -13,3 +13,6 @@ server-init:
 
 deploy:
 	./bin/deploy.sh
+
+software-update:
+	ssh "${SSH_DEST}" ./configuration/run.sh software-update
