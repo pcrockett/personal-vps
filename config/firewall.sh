@@ -1,7 +1,27 @@
 #!/usr/bin/env bash
 set -Eeuo pipefail
 
-yes | ufw reset
-ufw default deny incoming
-ufw allow proto tcp from any to any port 22
-yes | ufw enable
+# Start fresh
+iptables --policy INPUT ACCEPT
+ip6tables --policy INPUT ACCEPT
+iptables --flush
+ip6tables --flush
+
+# Allow localhost processes to talk
+iptables --append INPUT --in-interface lo --jump ACCEPT
+ip6tables --append INPUT --in-interface lo --jump ACCEPT
+
+# Allow remote machines to respond to us when we talk to them
+iptables --append INPUT --match conntrack --ctstate RELATED,ESTABLISHED --jump ACCEPT
+
+# SSH
+iptables --append INPUT --protocol tcp --dport 22 --jump ACCEPT
+
+# This makes Tailscale direct connections possible: https://tailscale.com/kb/1082/firewall-ports/
+# iptables --append INPUT --protocol udp --dport 41641 --jump ACCEPT
+
+iptables --policy INPUT DROP
+ip6tables --policy INPUT DROP
+iptables --policy FORWARD DROP
+ip6tables --policy FORWARD DROP
+
