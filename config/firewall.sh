@@ -6,6 +6,8 @@ iptables --policy INPUT ACCEPT
 ip6tables --policy INPUT ACCEPT
 iptables --flush
 ip6tables --flush
+iptables --delete-chain
+ip6tables --delete-chain
 
 # Allow localhost processes to talk
 iptables --append INPUT --in-interface lo --jump ACCEPT
