@@ -1,5 +1,3 @@
-## CapRover Server
+## Personal VPS
 
-[IBHC][ibhc] configuration for my CapRover server running Ubuntu 22.04.
-
-[ibhc]: https://github.com/pcrockett/ibhc
+Configuration for my cloud virtual private server running Ubuntu 22.04.
