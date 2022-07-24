@@ -8,5 +8,6 @@ dependencies=(
     initial-upgrade
     hostname-set
     password-changed
+    tailscale-installed
     firewall-configured
 )
