@@ -2,7 +2,7 @@
 set -Eeuo pipefail
 
 git push server
-ssh "${SSH_DEST}" << EOF
+ssh "${SSH_DEST}" -o SendEnv=TAILSCALE_AUTH_KEY << EOF
 cd ./configuration && \
 git reset --hard main && \
 ./run.sh
