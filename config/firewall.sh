@@ -17,7 +17,7 @@ ip6tables --append INPUT --in-interface lo --jump ACCEPT
 iptables --append INPUT --match conntrack --ctstate RELATED,ESTABLISHED --jump ACCEPT
 
 # SSH
-iptables --append INPUT --protocol tcp --dport 22 --jump ACCEPT
+iptables --append INPUT --protocol tcp --dport 22 --in-interface tailscale0 --jump ACCEPT
 
 # This makes Tailscale direct connections possible: https://tailscale.com/kb/1082/firewall-ports/
 iptables --append INPUT --protocol udp --dport 41641 --jump ACCEPT

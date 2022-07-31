@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 
 # shellcheck disable=2034
-dependencies=()
+dependencies=(
+    is-connected-via-tailscale
+)
 
 __firewall_script__="${CONFIG_DIR}/firewall.sh"
 
