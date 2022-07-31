@@ -20,7 +20,7 @@ iptables --append INPUT --match conntrack --ctstate RELATED,ESTABLISHED --jump A
 iptables --append INPUT --protocol tcp --dport 22 --jump ACCEPT
 
 # This makes Tailscale direct connections possible: https://tailscale.com/kb/1082/firewall-ports/
-# iptables --append INPUT --protocol udp --dport 41641 --jump ACCEPT
+iptables --append INPUT --protocol udp --dport 41641 --jump ACCEPT
 
 iptables --append INPUT --jump REJECT
 ip6tables --append INPUT --jump REJECT
