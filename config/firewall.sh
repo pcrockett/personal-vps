@@ -29,3 +29,13 @@ ip6tables --policy INPUT DROP
 iptables --policy FORWARD DROP
 ip6tables --policy FORWARD DROP
 
+service_exists() {
+    local service_name="${1}"
+    systemctl list-unit-files --full --type=service | grep --fixed-strings "${service_name}.service" &> /dev/null
+}
+
+# Tailscale modifies our packet filtering rules to enable exit node functionality, etc. We just blew those away, so we
+# need to restart the service.
+if service_exists tailscaled; then
+    systemctl restart tailscaled
+fi
