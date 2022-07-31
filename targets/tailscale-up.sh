@@ -10,6 +10,6 @@ reached_if() {
 apply() {
     tailscale up \
         --advertise-exit-node \
-        --authkey "${TAILSCALE_AUTH_KEY}" \
+        --authkey "${LC_TAILSCALE_AUTH_KEY}" \
         --hostname "${SERVER_HOSTNAME}"
 }

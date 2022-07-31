@@ -4,4 +4,4 @@ PATH_add bin
 export SSH_DEST="ubuntu@de.crockett.network"
 
 # Create a one-time Tailscale auth key for your server at https://login.tailscale.com/admin/settings/keys
-export TAILSCALE_AUTH_KEY="TODO"
+export LC_TAILSCALE_AUTH_KEY="TODO"
