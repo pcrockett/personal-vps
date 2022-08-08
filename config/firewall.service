@@ -1,0 +1,16 @@
+# This file copy / paste / modified from Fedora's `iptables-services` package
+# Thanks Fedora!
+
+[Unit]
+Description=Run firewall.sh on startup
+Before=network-pre.target
+Wants=network-pre.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/local/bin/firewall.sh
+ExecReload=/usr/local/bin/firewall.sh
+
+[Install]
+WantedBy=multi-user.target

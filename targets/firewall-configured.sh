@@ -4,6 +4,7 @@
 dependencies=(
     is-connected-via-tailscale
     firewall-script-installed
+    firewall-service-installed
 )
 
 apply() {
