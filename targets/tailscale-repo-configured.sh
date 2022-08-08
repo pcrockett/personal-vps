@@ -3,7 +3,7 @@
 # shellcheck disable=2034
 dependencies=()
 
-__tailscale_config_dir="${REPO_DIR}/config/tailscale"
+__tailscale_config_dir="${CONFIG_DIR}/tailscale"
 __dest_key_file="/usr/share/keyrings/tailscale-archive-keyring.gpg"
 __dest_list_file="/etc/apt/sources.list.d/tailscale.list"
 

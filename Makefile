@@ -1,4 +1,4 @@
-.PHONY: default lint server-init deploy software-update restart
+.PHONY: default lint server-init deploy software-update restart reboot
 
 default:
 	./run.sh
@@ -19,3 +19,5 @@ software-update:
 
 restart:
 	ssh "${SSH_DEST}" sudo systemctl reboot
+
+reboot: restart
