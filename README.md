@@ -4,6 +4,9 @@ Configuration for my cloud virtual private server running Ubuntu 22.04. Based on
 [IBHC](https://github.com/pcrockett/ibhc). Rather than configuring a local device, this is designed to configure a
 remote device via Git, SSH, and Bash.
 
+**Current Status:** Work-in-progress. Serves no purpose besides a Tailscale exit node. Sets up a strict iptables-based
+firewall only allowing SSH connections via Tailscale.
+
 ### Dependencies
 
 Installing [direnv](https://direnv.net/) and `make` on your local device will make your life easier, though with some
