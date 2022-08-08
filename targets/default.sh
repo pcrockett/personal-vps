@@ -8,6 +8,7 @@ dependencies=(
     initial-upgrade
     hostname-set
     password-changed
+    ssh-authorized-keys-configured
     tailscale-up
     firewall-configured
 )

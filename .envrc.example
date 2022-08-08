@@ -5,3 +5,6 @@ export SSH_DEST="ubuntu@de.crockett.network"
 
 # Create a one-time Tailscale auth key for your server at https://login.tailscale.com/admin/settings/keys
 export LC_TAILSCALE_AUTH_KEY="TODO"
+
+# Put SSH authorized_keys here
+export LC_AUTHORIZED_KEYS="TODO"
