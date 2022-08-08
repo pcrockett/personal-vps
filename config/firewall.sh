@@ -1,13 +1,8 @@
 #!/usr/bin/env bash
 set -Eeuo pipefail
 
-# Start fresh, make sure failures in this script don't lock us out of our server
-iptables --policy INPUT ACCEPT
-ip6tables --policy INPUT ACCEPT
-iptables --flush
-ip6tables --flush
-iptables --delete-chain
-ip6tables --delete-chain
+# This script is meant for running at boot-time. Use `reset-firewall.sh` if you want to setup firewall rules when the
+# machine is already running.
 
 # Allow localhost processes to talk
 iptables --append INPUT --in-interface lo --jump ACCEPT
@@ -28,14 +23,3 @@ iptables --policy INPUT DROP
 ip6tables --policy INPUT DROP
 iptables --policy FORWARD DROP
 ip6tables --policy FORWARD DROP
-
-service_exists() {
-    local service_name="${1}"
-    systemctl list-unit-files --full --type=service | grep --fixed-strings "${service_name}.service" &> /dev/null
-}
-
-# Tailscale modifies our packet filtering rules to enable exit node functionality, etc. We just blew those away, so we
-# need to restart the service.
-if service_exists tailscaled; then
-    systemctl restart tailscaled
-fi
