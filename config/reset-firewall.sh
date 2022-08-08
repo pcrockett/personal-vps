@@ -12,16 +12,28 @@ iptables --delete-chain
 ip6tables --delete-chain
 
 # Run the normal firewall script
-THIS_DIR="$(dirname "$(readlink -f "${0}")")"
-"${THIS_DIR}/firewall.sh"
+firewall.sh
+
+services_to_restart=(
+    tailscaled
+)
 
 service_exists() {
     local service_name="${1}"
     systemctl list-unit-files --full --type=service | grep --fixed-strings "${service_name}.service" &> /dev/null
 }
 
-# Tailscale modifies our packet filtering rules to enable exit node functionality, etc. We just blew those away, so we
-# need to restart the service.
-if service_exists tailscaled; then
-    systemctl restart tailscaled
-fi
+service_is_running() {
+    test "$(systemctl is-active "${1}")" == "active"
+}
+
+restart_if_needed() {
+    local service_name="${1}"
+    if service_exists "${service_name}" && service_is_running "${service_name}"; then
+        systemctl restart "${service_name}"
+    fi
+}
+
+for service_name in "${services_to_restart[@]}"; do
+    restart_if_needed "${service_name}"
+done
