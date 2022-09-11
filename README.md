@@ -13,8 +13,9 @@ exit node, with an iptables-based firewall only allowing SSH connections via the
 
 ### TODO
 
-* [ ] Set up [Podman](https://podman.io) to run [Huginn](https://github.com/huginn/huginn/) in a [pod](https://www.redhat.com/sysadmin/compose-podman-pods).
-* [ ] Set up a [Nextcloud](https://nextcloud.com/) pod.
+* [ ] Set up [Podman](https://podman.io)
+* [ ] Set up a [Nextcloud](https://github.com/nextcloud/docker) pod
+    * More about pods: https://www.redhat.com/sysadmin/compose-podman-pods
 
 ### Dependencies
 
