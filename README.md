@@ -1,7 +1,7 @@
 ## Personal VPS
 
-Configuration for my cloud virtual private server running Ubuntu 22.04. Based on
-[IBHC](https://github.com/pcrockett/ibhc). This repository assumes three things:
+Configuration for my cloud virtual private server running Ubuntu 22.04. This is an example of
+[Idempotent Bash Host Configuration (IBHC)](https://github.com/pcrockett/ibhc). This repository assumes three things:
 
 1. You've cloned this repository on a local Linux workstation
     * _I call this the "controller," analogous to [Ansible][ansible]'s "control node" concept._
@@ -28,9 +28,11 @@ not strictly required.
 2. Clone this repo to your controller machine.
 3. Copy [.envrc.example](.envrc.example) to `.envrc`.
 4. Edit the variables in `.envrc` accordingly.
-5. `make server-init && make deploy`
+5. `direnv allow` (or if not using direnv, `source .envrc` should work)
+6. `make server-init && make deploy`
 
-From then on, after making any changes to the repository, the main command you'll use is `make deploy`.
+From then on, after making any changes to the repository, the main command you'll use is `make deploy`. Other commonly
+used Makefile targets include `software-update` and `reboot`.
 
 ### Code Organization
 
@@ -44,9 +46,9 @@ Git + SSH, and then the [`run.sh` script](run.sh) will be executed on the remote
 What's a "target" then? A target is like a "goal" or a desired outcome. And a target _script_ is a little atomic bit of
 logic that clearly specifies 3 things:
 
-1. Dependencies: Which other targets need to be reached before this one can be applied.
-2. Logic that determines whether the target has been reached yet or not.
-3. Logic that should be applied to actually reach the desired outcome.
+1. `dependencies`: Which other targets need to be reached before this one can be applied.
+2. `reached_if`: Logic that determines whether the target has been reached yet or not.
+3. `apply`: Logic that should be applied to actually reach the desired outcome.
 
 A very simple, typical example of a target is the [`tailscale-installed` target](targets/tailscale-installed.sh).
 
