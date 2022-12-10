@@ -18,4 +18,6 @@ apply() {
     sudo cp "${__tailscale_config_dir}/jammy.noarmor.gpg" "${__dest_key_file}"
     sudo cp "${__tailscale_config_dir}/jammy.tailscale-keyring.list" "${__dest_list_file}"
     sudo apt-get update
+    set_file_unchanged "${__tailscale_config_dir}/jammy.noarmor.gpg"
+    set_file_unchanged "${__tailscale_config_dir}/jammy.tailscale-keyring.list"
 }
