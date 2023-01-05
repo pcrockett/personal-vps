@@ -1,7 +1,16 @@
-.PHONY: lint server-init deploy software-update reboot upload-mullvad
+.PHONY: lint mullvad-conf mullvad-down mullvad-up server-init deploy software-update reboot
 
 lint:
 	shellcheck *.sh bin/* targets/*.sh targets/lib/*.sh targets/examples/*.sh lib.d/*.sh
+
+mullvad-conf:
+	./bin/upload-mullvad.sh
+
+mullvad-down:
+	false
+
+mullvad-up:
+	false
 
 server-init:
 	ssh "${SSH_DEST}" git init --initial-branch main ./configuration
@@ -16,6 +25,3 @@ software-update:
 
 reboot:
 	ssh "${SSH_DEST}" sudo systemctl reboot
-
-upload-mullvad:
-	./bin/upload-mullvad.sh

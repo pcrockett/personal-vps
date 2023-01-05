@@ -19,7 +19,7 @@ https://mullvad.net/en/account/#/wireguard-config
 
 Save that file to your controller PC at the repo root with the name \`${__zip_name}\`.
 
-Then resume the process with \`make upload-mullvad deploy\`
+Then resume the process with \`make mullvad-conf deploy\`
 "
         false
     else
