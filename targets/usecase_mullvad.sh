@@ -2,5 +2,6 @@
 
 # shellcheck disable=2034
 dependencies=(
-    wireguard-key-generated
+    wireguard-tools-installed
+    mullvad-config-uploaded
 )

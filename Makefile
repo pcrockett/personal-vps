@@ -1,4 +1,4 @@
-.PHONY: lint server-init deploy software-update reboot
+.PHONY: lint server-init deploy software-update reboot upload-mullvad
 
 lint:
 	shellcheck *.sh bin/* targets/*.sh targets/lib/*.sh targets/examples/*.sh lib.d/*.sh
@@ -16,3 +16,6 @@ software-update:
 
 reboot:
 	ssh "${SSH_DEST}" sudo systemctl reboot
+
+upload-mullvad:
+	./bin/upload-mullvad.sh
