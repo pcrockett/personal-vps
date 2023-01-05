@@ -10,8 +10,10 @@ reached_if() {
 }
 
 apply() {
-    sudo rm --force /etc/wireguard/wg0.conf
     random_config="$(sudo find /etc/wireguard/mullvad/ -maxdepth 1 -mindepth 1 -name "*.conf" | shuf | head --lines 1)"
-    sudo ln --symbolic "${random_config}" /etc/wireguard/wg0.conf
+
+    # We don't want Mullvad's DNS server:
+    sudo sed "s/^DNS.*\$//" "${random_config}" | sudo tee /etc/wireguard/wg0.conf > /dev/null
+
     sudo systemctl enable --now wg-quick@wg0.service
 }
