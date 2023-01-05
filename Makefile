@@ -10,7 +10,7 @@ mullvad-down:
 	false
 
 mullvad-up:
-	false
+	ssh "${SSH_DEST}" ./configuration/run.sh mullvad-up
 
 server-init:
 	ssh "${SSH_DEST}" git init --initial-branch main ./configuration
