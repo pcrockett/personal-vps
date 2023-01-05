@@ -22,8 +22,8 @@ apply() {
         umask go-rwx
         unzip "${__state_zip}" -d "${__state_extract_dir}"
     )
-    chown -R root:root "${__state_extract_dir}"
     sudo rm --recursive --force "${__etc_wireguard_mullvad_dir}"
+    sudo chown -R root:root "${__state_extract_dir}"
     sudo mv "${__state_extract_dir}" "${__etc_wireguard_mullvad_dir}"
 
     sha256sum "${__state_zip}" > "${__state_hash_file}"
