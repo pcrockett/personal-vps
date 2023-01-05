@@ -9,6 +9,7 @@ __state_hash_file="${STATE_DIR}/config-placed-state"
 # shellcheck disable=2034
 dependencies=(
     mullvad-config-uploaded
+    unzip-installed
 )
 
 reached_if() {
