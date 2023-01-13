@@ -6,7 +6,8 @@ dependencies=(
 )
 
 reached_if() {
-    service_enabled_and_active "wg-quick@wg0.service"
+    service_exists wg-quick@
+    test "$(systemctl is-active wg-quick@wg0)" == "active"
 }
 
 apply() {
