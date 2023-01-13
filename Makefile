@@ -13,9 +13,7 @@ mullvad-up:
 	ssh "${SSH_DEST}" ./configuration/run.sh mullvad-up
 
 server-init:
-	ssh "${SSH_DEST}" git init --initial-branch main ./configuration
-	git remote add server "${SSH_DEST}:configuration"
-	git push --set-upstream server main:main
+	./bin/init-server.sh
 
 deploy:
 	./bin/deploy.sh
