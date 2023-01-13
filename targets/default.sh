@@ -12,5 +12,4 @@ dependencies=(
     tailscale-up
     firewall-configured
     net-tools-installed
-    usecase_mullvad
 )
