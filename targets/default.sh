@@ -11,5 +11,5 @@ dependencies=(
     ssh-authorized-keys-configured
     tailscale-up
     firewall-configured
-    net-tools-installed
+    usecase_admin
 )
