@@ -8,3 +8,6 @@ export LC_TAILSCALE_AUTH_KEY="TODO"
 
 # Put SSH authorized_keys here
 export LC_AUTHORIZED_KEYS="TODO"
+
+# Allow uncommon terminals like kitty to connect via SSH
+export TERM=xterm-256color
