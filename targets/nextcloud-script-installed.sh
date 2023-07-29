@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 
 # shellcheck disable=2034
-dependencies=()
+dependencies=(
+    nextcloud-container-created
+)
 
 __script_name="nextcloud.sh"
 __repo_file_location="${REPO_DIR}/config/nextcloud/${__script_name}"

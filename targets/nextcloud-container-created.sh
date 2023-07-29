@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 
 # shellcheck disable=2034
-dependencies=()
+dependencies=(
+    docker-installed
+    docker-group-added
+)
 
 # https://github.com/nextcloud/all-in-one
 #
