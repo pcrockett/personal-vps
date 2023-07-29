@@ -11,11 +11,33 @@ ip6tables --append INPUT --in-interface lo --jump ACCEPT
 # Allow remote machines to respond to us when we talk to them
 iptables --append INPUT --match conntrack --ctstate RELATED,ESTABLISHED --jump ACCEPT
 
+allow_tailscale() {
+    local port="${1}"
+    local protocol="${2:-tcp}"
+    iptables --append INPUT --protocol "${protocol}" --dport "${port}" --in-interface tailscale0 --jump ACCEPT
+}
+
+allow_public() {
+    local port="${1}"
+    local protocol="${2:-tcp}"
+    iptables --append INPUT --protocol "${protocol}" --dport "${port}" --jump ACCEPT
+}
+
 # SSH
-iptables --append INPUT --protocol tcp --dport 22 --in-interface tailscale0 --jump ACCEPT
+allow_tailscale 22 tcp
+
+# Nextcloud
+# https://github.com/nextcloud/all-in-one#explanation-of-used-ports
+allow_public 80 tcp       # PUBLIC: allows retrieval of ACME TLS certificates
+allow_tailscale 8080 tcp  # master container interface
+allow_tailscale 8443 tcp  # master container interface with valid cert
+allow_tailscale 443 tcp   # main nextcloud interface
+allow_tailscale 443 udp   # main nextcloud interface (http3)
+allow_tailscale 3478 tcp  # TURN
+allow_tailscale 3478 udp  # TURN
 
 # This makes Tailscale direct connections possible: https://tailscale.com/kb/1082/firewall-ports/
-iptables --append INPUT --protocol udp --dport 41641 --jump ACCEPT
+allow_public 41641 udp
 
 iptables --append INPUT --jump REJECT
 ip6tables --append INPUT --jump REJECT
