@@ -12,4 +12,5 @@ dependencies=(
     tailscale-up
     firewall-configured
     usecases/admin
+    usecases/nextcloud
 )
