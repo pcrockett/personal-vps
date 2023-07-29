@@ -32,6 +32,8 @@ allow_public 80 tcp       # PUBLIC: allows retrieval of ACME TLS certificates
 allow_tailscale 8080 tcp  # master container interface
 allow_tailscale 8443 tcp  # master container interface with valid cert
 allow_tailscale 443 tcp   # main nextcloud interface
+# allow_public 443 tcp  # need this ONLY TEMPORARILY? to get through the setup phase
+                        # can also manually run something like `iptables --insert INPUT --protocol tcp --dport 443 --jump ACCEPT`
 allow_tailscale 443 udp   # main nextcloud interface (http3)
 allow_tailscale 3478 tcp  # TURN
 allow_tailscale 3478 udp  # TURN

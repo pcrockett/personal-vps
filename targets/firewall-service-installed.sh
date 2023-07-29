@@ -5,7 +5,7 @@ dependencies=(
     firewall-script-installed
 )
 
-__svc_file="${CONFIG_DIR}/firewall.service"
+__svc_file="${CONFIG_DIR}/firewall/firewall.service"
 
 reached_if() {
     service_enabled firewall \

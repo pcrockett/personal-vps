@@ -5,7 +5,7 @@ dependencies=(
     is-connected-via-tailscale
 )
 
-__firewall_script_src="${CONFIG_DIR}/firewall.sh"
+__firewall_script_src="${CONFIG_DIR}/firewall/firewall.sh"
 
 reached_if() {
     file_is_unchanged "${__firewall_script_src}" \
@@ -14,6 +14,6 @@ reached_if() {
 
 apply() {
     sudo cp "${__firewall_script_src}" /usr/local/bin/
-    sudo "${CONFIG_DIR}/reset-firewall.sh"
+    sudo "${CONFIG_DIR}/firewall/reset-firewall.sh"
     set_file_unchanged "${__firewall_script_src}"
 }
