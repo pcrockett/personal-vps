@@ -2,6 +2,7 @@
 
 lint:
 	shellcheck *.sh bin/* targets/*.sh targets/lib/*.sh targets/examples/*.sh lib.d/*.sh
+	/home/linuxbrew/.linuxbrew/bin/tagref
 
 server-init:
 	./bin/init-server.sh
