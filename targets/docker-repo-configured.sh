@@ -18,4 +18,7 @@ apply() {
         | dump_as_root "${__keyring_file}"
     echo "deb [ arch=$(dpkg --print-architecture) signed-by=${__keyring_file} ] https://download.docker.com/linux/ubuntu $(lsb_release --codename --short) stable" \
         | dump_as_root "${__list_file}"
+
+    sudo chmod u=rw,g=r,o=r "${__keyring_file}"
+    sudo chmod u=rw,g=r,o=r "${__list_file}"
 }
