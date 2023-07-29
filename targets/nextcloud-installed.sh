@@ -11,6 +11,7 @@
 # shellcheck disable=2034
 dependencies=(
     docker-installed
+    docker-group-added
 )
 
 # This name MUST NOT CHANGE, according to the docs
