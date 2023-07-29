@@ -11,6 +11,7 @@ set -Eeuo pipefail
 
 docker run \
     --name nextcloud-aio-mastercontainer \
+    --restart no \
     --publish 80:80 \
     --publish 8080:8080 \
     --publish 8443:8443 \
