@@ -4,7 +4,9 @@
 # only execute one time even though you're installing multiple packages individually.
 
 # shellcheck disable=2034
-dependencies=()
+dependencies=(
+    docker-repo-configured
+)
 
 apply() {
     sudo apt-get update
