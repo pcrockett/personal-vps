@@ -4,5 +4,6 @@
 dependencies=(
     docker-installed
     docker-group-added
-    nextcloud-installed
+    nextcloud-script-installed
+    nextcloud-service-installed
 )

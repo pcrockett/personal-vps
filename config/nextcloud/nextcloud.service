@@ -1,0 +1,13 @@
+[Unit]
+Description=Nextcloud
+After=firewall.target
+Requires=docker.service
+
+[Service]
+Type=exec
+ExecStart=/usr/local/bin/nextcloud.sh
+Restart=always
+RestartSec=60
+
+[Install]
+WantedBy=multi-user.target
