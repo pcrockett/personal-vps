@@ -11,5 +11,5 @@ dependencies=(
     ssh-authorized-keys-configured
     tailscale-up
     firewall-configured
-    usecase_admin
+    usecases/admin
 )
