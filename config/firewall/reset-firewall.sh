@@ -16,6 +16,7 @@ firewall.sh
 
 services_to_restart=(
     tailscaled
+    docker
 )
 
 service_exists() {
