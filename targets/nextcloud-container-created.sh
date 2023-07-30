@@ -17,8 +17,7 @@ dependencies=(
 # According to docs, this cannot be customized, or it'll break (for example) updates
 __aio_container_name=nextcloud-aio-mastercontainer
 
-# TODO: look these IPs up dynamically?
-__external_ip=51.68.190.121
+# TODO: look up this IP up dynamically?
 __tailscale_ip=100.90.64.115
 
 reached_if() {
@@ -29,7 +28,7 @@ apply() {
     docker container create \
         --name "${__aio_container_name}" \
         --restart no \
-        --publish "${__external_ip}:80:80" \
+        --publish 80:80 \
         --publish "${__tailscale_ip}:8080:8080" \
         --publish "${__tailscale_ip}:8443:8443" \
         --volume nextcloud_aio_mastercontainer:/mnt/docker-aio-config \
