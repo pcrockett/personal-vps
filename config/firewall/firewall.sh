@@ -30,9 +30,9 @@ allow_tailscale 22 tcp
 # https://github.com/nextcloud/all-in-one#explanation-of-used-ports
 allow_public 80 tcp       # allows retrieval of ACME TLS certificates, redirects to https
 allow_public 443 tcp      # main nextcloud interface
-allow_public 443 udp      # main nextcloud interface (http3)
-allow_public 3478 tcp     # TURN
-allow_public 3478 udp     # TURN
+# allow_public 443 udp      # main nextcloud interface (http3)
+# allow_public 3478 tcp     # TURN -- not needed, Nextcloud Talk is disabled for this low-end server
+# allow_public 3478 udp     # TURN -- not needed, Nextcloud Talk is disabled for this low-end server
 allow_tailscale 8080 tcp  # master container interface
 allow_tailscale 8443 tcp  # master container interface with valid cert
 
