@@ -7,4 +7,5 @@ dependencies=(
     nextcloud-container-created
     nextcloud-script-installed
     nextcloud-service-installed
+    nextcloud-occ-command-installed
 )
